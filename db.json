@@ -1,0 +1,16 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "text": "Learn React",
+      "day": "5 March 2023",
+      "reminder": false
+    },
+    {
+      "text": "learn sass",
+      "day": "tuesday",
+      "reminder": true,
+      "id": 2
+    }
+  ]
+}
