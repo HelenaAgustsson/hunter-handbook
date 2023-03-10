@@ -1,12 +1,12 @@
-const Footer = ()=>{
-    return (
-        <footer>
-            <p>Created by Helena Agustsson</p>
-            <a href="" >About</a>
-        </footer>
-        
-    )
-    
+import { Link } from 'react-router-dom'
+
+const Footer = () => {
+  return (
+    <footer>
+      <p>Copyright &copy; 2021</p>
+      <Link to='/about'>About</Link>
+    </footer>
+  )
 }
 
 export default Footer

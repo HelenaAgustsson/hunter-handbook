@@ -1,16 +1,22 @@
 {
-  "tasks": [
+  "creatures": [
     {
-      "id": 1,
-      "text": "Learn React",
-      "day": "5 March 2023",
-      "reminder": false
+      "name": "Woman in White",
+      "weakness": "Iron",
+      "type": "spirit",
+      "id": 1
     },
     {
-      "text": "learn sass",
-      "day": "tuesday",
-      "reminder": true,
+      "name": "Werewolf",
+      "weakness": "Silver",
+      "type": "monster",
       "id": 2
+    },
+    {
+      "name": "Shape-shifter",
+      "weakness": "silver",
+      "type": "monster",
+      "id": 3
     }
   ]
 }

@@ -1,39 +1,37 @@
 import { useEffect, useState } from "react";
 import './App.css';
 import Header from './components/Header';
-import Tasks from './components/Tasks';
-import AddTask from "./components/AddTask";
-import Footer from "./components/footer";
+import Creatures from './components/Creatures';
+import AddCreature from "./components/AddCreature";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 const App=()=> {
-  const [showAddTask, setShowAddTask]=useState(false)
-  const [tasks, setTasks] = useState([])
+  const [creatures, setCreatures] = useState([])
 
   useEffect(()=>{
-    const getTasks = async() => {
-      const tasksFromServer = await fetchTasks()
-      setTasks(tasksFromServer)
+    const getItems = async() => {
+      const itemsFromServer = await fetchItems()
+      setCreatures(itemsFromServer)
     }
 
-    getTasks()
+    getItems()
   }, [])
 
-  //fetch tasks
-  const fetchTasks = async () => {
-    const res = await fetch('http://localhost:5000/tasks')
+  //fetch creatures
+  const fetchItems = async () => {
+    const res = await fetch('http://localhost:5000/creatures')
     const data = await res.json()
     return data;
   }
 
-  const fetchTask = async (id) => {
-    const res = await fetch(`http://localhost:5000/tasks/${id}`)
+  const fetchItem = async (id) => {
+    const res = await fetch(`http://localhost:5000/creatures/${id}`)
     const data = await res.json()
     return data;
   }
 
-  const addTask = async(task)=>{
-    const res = await fetch('http://localhost:5000/tasks', {
+  const addItem = async(task)=>{
+    const res = await fetch('http://localhost:5000/creatures', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -41,46 +39,25 @@ const App=()=> {
       body: JSON.stringify(task)
     })
     const data = await res.json()
-    setTasks([...tasks, data])
-    //const  id = Math.floor(Math.random()*1000)+1;
-    //const newTask = {id, ...task}
-    //setTasks([...tasks, newTask])
+    setCreatures([...creatures, data])
   }
 
-  const deleteTask=async(id)=>{
-    await fetch(`http://localhost:5000/tasks/${id}`, {
+  const deleteItem=async(id)=>{
+    await fetch(`http://localhost:5000/creatures/${id}`, {
       method: 'DELETE',
     })
-    setTasks(tasks.filter((task)=> task.id!==id));
-  }
-
-  const toggleReminder= async(id)=> {
-    const taskToToggle = await fetchTask(id)
-    const updatedTask = {...taskToToggle, reminder: !taskToToggle.reminder}
-    const res = await fetch(`http://localhost:5000/tasks/${id}`,{
-      method: 'PUT',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(updatedTask)
-    })
-
-    const data = await res.json()
-
-    setTasks(
-        tasks.map((task) => 
-          task.id === id ? {...task, reminder: data.reminder} : task
-      )
-    )
+    setCreatures(creatures.filter((task)=> task.id!==id));
   }
 
   return (
     <Router>
-      <div className="container">
-        <Header title="Task tracker" onAdd={()=> setShowAddTask(!showAddTask)} showAdd={showAddTask} />
-        {showAddTask ? <AddTask onAdd={addTask} /> : '' }
-        {tasks.length>0 ? 
-          <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} /> : 'No tasks to show'}
+      <Header title="The Hunter's Lore" />
+      <div className='container'>
+        <Routes>
+          <Route path='/' element={<></>}/>
+          <Route path='/creatures' element={<Creatures creatures={creatures} onDelete={deleteItem}  />} />
+          <Route path='add-creature' element={<AddCreature onAdd={addItem} />} />
+        </Routes>
       </div>
     </Router>
   )
