@@ -11,6 +11,7 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### `npm run server` to start the mock server at http://localhost:5000
+### `npm run server` 
+to start the mock server at http://localhost:5000
 
 
