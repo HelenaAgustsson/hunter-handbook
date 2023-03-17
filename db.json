@@ -1,22 +1,37 @@
 {
   "creatures": [
     {
+      "name": "Hell Hound",
+      "weaknesses": [
+        "Goopher Dust"
+      ],
+      "type": "monster",
+      "id": 5
+    },
+    {
+      "name": "Crossroads demon",
+      "weaknesses": [
+        "Demon Trap"
+      ],
+      "type": "demon",
+      "id": 6
+    },
+    {
       "name": "Woman in White",
-      "weakness": "Iron",
+      "weaknesses": [
+        "salt",
+        "iron"
+      ],
       "type": "spirit",
-      "id": 1
+      "id": 8
     },
     {
-      "name": "Werewolf",
-      "weakness": "Silver",
-      "type": "monster",
-      "id": 2
-    },
-    {
-      "name": "Shape-shifter",
-      "weakness": "silver",
-      "type": "monster",
-      "id": 3
+      "name": "Loki",
+      "weaknesses": [
+        "Angel Blade"
+      ],
+      "type": "deity",
+      "id": 9
     }
   ]
 }

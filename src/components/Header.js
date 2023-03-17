@@ -6,7 +6,7 @@ const Header=({title})=> {
     return (
         <header className='header'>
             <h1>{title}</h1>
-            <h4>All the lore, in one place. Happy hunting!</h4>
+            <h4>All the lore, in one place. <br></br> Happy hunting!</h4>
             <div className='link-container'>
                 <Link to='/creatures'>Creatures</Link>
                 <Link to='/add-creature'>Add Creatures</Link>

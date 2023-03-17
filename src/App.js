@@ -50,7 +50,7 @@ const App=()=> {
   }
 
   return (
-    <Router>
+    <Router basename="/">
       <Header title="The Hunter's Lore" />
       <div className='container'>
         <Routes>
