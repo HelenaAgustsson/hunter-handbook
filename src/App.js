@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import './App.css';
 import Header from './components/Header';
 import Creatures from './components/Creatures';
+import Creature from "./components/Creature";
 import AddCreature from "./components/AddCreature";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import CreatureProfile from "./components/CreatureProfile";
 
 const App=()=> {
   const [creatures, setCreatures] = useState([])
@@ -20,12 +22,6 @@ const App=()=> {
   //fetch creatures
   const fetchItems = async () => {
     const res = await fetch('http://localhost:5000/creatures')
-    const data = await res.json()
-    return data;
-  }
-
-  const fetchItem = async (id) => {
-    const res = await fetch(`http://localhost:5000/creatures/${id}`)
     const data = await res.json()
     return data;
   }
@@ -55,7 +51,8 @@ const App=()=> {
       <div className='container'>
         <Routes>
           <Route path='/' element={<></>}/>
-          <Route path='/creatures' element={<Creatures creatures={creatures} onDelete={deleteItem}  />} />
+          <Route path='/creatures/' element={<Creatures creatures={creatures} onDelete={deleteItem}  />} />
+          <Route exact path="/creatures/:id" element={<CreatureProfile onDelete={deleteItem} />} />
           <Route path='add-creature' element={<AddCreature onAdd={addItem} />} />
         </Routes>
       </div>
